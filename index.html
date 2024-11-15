@@ -1,0 +1,446 @@
+<!-- Index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <title>School Admission Form</title>
+  <!-- Include Google Fonts and Font Awesome for Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Include SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+    /* Section Headers */
+    .section-header {
+      font-size: 1.5em;
+      margin: 30px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #2980b9;
+      color: #2980b9;
+      grid-column: 1 / -1;
+    }
+    /* Form Styles */
+    form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px 30px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      margin-bottom: 5px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      color: #34495e;
+    }
+    .form-group label i {
+      margin-right: 8px;
+      color: #2980b9;
+    }
+    .form-group input,
+    .form-group select {
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+      font-size: 1em;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #2980b9;
+      outline: none;
+      box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+    }
+    /* Checkbox Styles */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      grid-column: 1 / -1;
+    }
+    .checkbox-group input {
+      margin-right: 10px;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+    .checkbox-group label {
+      font-weight: 400;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: #34495e;
+    }
+    .checkbox-group label i {
+      margin-right: 8px;
+      color: #2980b9;
+    }
+    /* Submit Button */
+    .submit-btn {
+      grid-column: 2 / 3;
+      padding: 15px;
+      background-color: #2980b9;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background-color 0.3s, transform 0.3s;
+      margin-top: 20px;
+    }
+    .submit-btn:hover {
+      background-color: #1f6391;
+      transform: translateY(-2px);
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      form {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .submit-btn {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+      form {
+        grid-template-columns: 1fr;
+      }
+      .submit-btn {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>School Admission Form</h2>
+    <form id="admissionForm">
+      <!-- 1. Student Information -->
+      <div class="section-header">1. Student Information</div>
+      
+      <div class="form-group">
+        <label for="fullName"><i class="fas fa-user"></i> Full Name</label>
+        <input type="text" id="fullName" name="fullName" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="dateOfBirth"><i class="fas fa-calendar-alt"></i> Date of Birth</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="gender"><i class="fas fa-venus-mars"></i> Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="placeOfBirth"><i class="fas fa-map-marker-alt"></i> Place of Birth</label>
+        <input type="text" id="placeOfBirth" name="placeOfBirth" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="nationality"><i class="fas fa-globe"></i> Nationality</label>
+        <input type="text" id="nationality" name="nationality" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="currentAddress"><i class="fas fa-home"></i> Current Address</label>
+        <input type="text" id="currentAddress" name="currentAddress" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="permanentAddress"><i class="fas fa-address-card"></i> Permanent Address</label>
+        <input type="text" id="permanentAddress" name="permanentAddress">
+      </div>
+      
+      <div class="form-group">
+        <label for="contactNumber"><i class="fas fa-phone"></i> Contact Number</label>
+        <input type="tel" id="contactNumber" name="contactNumber" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="emailAddress"><i class="fas fa-envelope"></i> Email Address</label>
+        <input type="email" id="emailAddress" name="emailAddress" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="gradeApplyingFor"><i class="fas fa-school"></i> Grade Applying For</label>
+        <select id="gradeApplyingFor" name="gradeApplyingFor" required>
+          <option value="">Select</option>
+          <option value="Kindergarten">Kindergarten</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <!-- Add more grades as needed -->
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="preferredStartDate"><i class="fas fa-calendar-check"></i> Preferred Start Date</label>
+        <input type="date" id="preferredStartDate" name="preferredStartDate" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="previousSchoolName"><i class="fas fa-school"></i> Previous School Name</label>
+        <input type="text" id="previousSchoolName" name="previousSchoolName" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="previousGradeCompleted"><i class="fas fa-graduation-cap"></i> Previous Grade/Year Completed</label>
+        <input type="text" id="previousGradeCompleted" name="previousGradeCompleted" required>
+      </div>
+      
+      <!-- 2. Parent/Guardian Information -->
+      <div class="section-header">2. Parent/Guardian Information</div>
+      
+      <div class="form-group">
+        <label for="parentFullName"><i class="fas fa-user-tie"></i> Parent/Guardian Full Name</label>
+        <input type="text" id="parentFullName" name="parentFullName" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="relationshipToStudent"><i class="fas fa-link"></i> Relationship to Student</label>
+        <select id="relationshipToStudent" name="relationshipToStudent" required>
+          <option value="">Select</option>
+          <option value="Father">Father</option>
+          <option value="Mother">Mother</option>
+          <option value="Guardian">Guardian</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="parentOccupation"><i class="fas fa-briefcase"></i> Occupation</label>
+        <input type="text" id="parentOccupation" name="parentOccupation" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="parentContactNumber"><i class="fas fa-phone-alt"></i> Contact Number</label>
+        <input type="tel" id="parentContactNumber" name="parentContactNumber" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="parentEmailAddress"><i class="fas fa-envelope"></i> Email Address</label>
+        <input type="email" id="parentEmailAddress" name="parentEmailAddress" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="parentAddress"><i class="fas fa-address-book"></i> Address</label>
+        <input type="text" id="parentAddress" name="parentAddress">
+      </div>
+      
+      <div class="form-group">
+        <label for="emergencyContact"><i class="fas fa-phone-square-alt"></i> Emergency Contact Information</label>
+        <input type="tel" id="emergencyContact" name="emergencyContact" required>
+      </div>
+      
+      <!-- 3. Family Details -->
+      <div class="section-header">3. Family Details</div>
+      
+      <div class="form-group">
+        <label for="siblingInfo"><i class="fas fa-user-friends"></i> Sibling Information</label>
+        <input type="text" id="siblingInfo" name="siblingInfo">
+      </div>
+      
+      <div class="form-group">
+        <label for="primaryLanguage"><i class="fas fa-language"></i> Primary Language Spoken at Home</label>
+        <input type="text" id="primaryLanguage" name="primaryLanguage" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="secondaryLanguage"><i class="fas fa-language"></i> Secondary Language</label>
+        <input type="text" id="secondaryLanguage" name="secondaryLanguage">
+      </div>
+      
+      <div class="form-group">
+        <label for="maritalStatus"><i class="fas fa-ring"></i> Marital Status of Parents</label>
+        <select id="maritalStatus" name="maritalStatus">
+          <option value="">Select</option>
+          <option value="Married">Married</option>
+          <option value="Single">Single</option>
+          <option value="Divorced">Divorced</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+      
+      <!-- 4. Medical and Health Information -->
+      <div class="section-header">4. Medical and Health Information</div>
+      
+      <div class="form-group">
+        <label for="bloodGroup"><i class="fas fa-tint"></i> Blood Group</label>
+        <input type="text" id="bloodGroup" name="bloodGroup" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="knownAllergies"><i class="fas fa-allergies"></i> Known Allergies</label>
+        <input type="text" id="knownAllergies" name="knownAllergies">
+      </div>
+      
+      <div class="form-group">
+        <label for="chronicIllnesses"><i class="fas fa-heartbeat"></i> Chronic Illnesses or Medical Conditions</label>
+        <input type="text" id="chronicIllnesses" name="chronicIllnesses">
+      </div>
+      
+      <div class="form-group">
+        <label for="vaccinationRecord"><i class="fas fa-syringe"></i> Vaccination Record</label>
+        <input type="text" id="vaccinationRecord" name="vaccinationRecord">
+      </div>
+      
+      <div class="form-group">
+        <label for="healthInsurance"><i class="fas fa-shield-alt"></i> Health Insurance Details</label>
+        <input type="text" id="healthInsurance" name="healthInsurance">
+      </div>
+      
+      <div class="form-group">
+        <label for="doctorName"><i class="fas fa-user-md"></i> Doctor’s Name</label>
+        <input type="text" id="doctorName" name="doctorName" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="doctorContact"><i class="fas fa-phone-square-alt"></i> Doctor’s Contact Information</label>
+        <input type="tel" id="doctorContact" name="doctorContact" required>
+      </div>
+      
+      <!-- 5. Academic History -->
+      <div class="section-header">5. Academic History</div>
+      
+      <div class="form-group">
+        <label for="academicGrades"><i class="fas fa-book"></i> Grades and Subjects from Previous School</label>
+        <input type="text" id="academicGrades" name="academicGrades" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="achievements"><i class="fas fa-trophy"></i> Special Achievements or Awards</label>
+        <input type="text" id="achievements" name="achievements">
+      </div>
+      
+      <div class="form-group">
+        <label for="extracurricular"><i class="fas fa-heart"></i> Extracurricular Activities or Hobbies</label>
+        <input type="text" id="extracurricular" name="extracurricular">
+      </div>
+      
+      <!-- 6. Additional Needs or Support -->
+      <div class="section-header">6. Additional Needs or Support</div>
+      
+      <div class="form-group">
+        <label for="specialEducation"><i class="fas fa-universal-access"></i> Special Education Needs</label>
+        <input type="text" id="specialEducation" name="specialEducation">
+      </div>
+      
+      <div class="form-group">
+        <label for="learningDisabilities"><i class="fas fa-brain"></i> Learning Disabilities or Support Required</label>
+        <input type="text" id="learningDisabilities" name="learningDisabilities">
+      </div>
+      
+      <div class="form-group">
+        <label for="counselingSupport"><i class="fas fa-comments"></i> Any Psychological or Counseling Support Needed</label>
+        <input type="text" id="counselingSupport" name="counselingSupport">
+      </div>
+      
+      <!-- 7. School Policies and Agreement -->
+      <div class="section-header">7. School Policies and Agreement</div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="agreeToRules" name="agreeToRules" required>
+        <label for="agreeToRules"><i class="fas fa-check-circle"></i> I agree to follow the school rules.</label>
+      </div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="consentPhotos" name="consentPhotos">
+        <label for="consentPhotos"><i class="fas fa-camera"></i> I consent to the use of photographs for school events and publications.</label>
+      </div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="permissionTrips" name="permissionTrips">
+        <label for="permissionTrips"><i class="fas fa-plane"></i> I give permission for field trips and school outings.</label>
+      </div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="acknowledgeFees" name="acknowledgeFees" required>
+        <label for="acknowledgeFees"><i class="fas fa-money-bill-wave"></i> I acknowledge the school fees and payment policies.</label>
+      </div>
+      
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">Submit Application</button>
+    </form>
+  </div>
+  
+  <script>
+    // Handle form submission
+    document.getElementById('admissionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const form = document.getElementById('admissionForm');
+      const formData = {};
+      
+      // Collect form data
+      const elements = form.elements;
+      for(let i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        if(element.name) {
+          if(element.type === 'checkbox') {
+            formData[element.name] = element.checked;
+          } else {
+            formData[element.name] = element.value;
+          }
+        }
+      }
+      
+      // Call the server-side function
+      google.script.run.withSuccessHandler(function(response) {
+        if(response.status === 'SUCCESS') {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: response.message,
+            showConfirmButton: false,
+            timer: 3000
+          });
+          form.reset();
+        } else {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Error: ' + response.message,
+            showConfirmButton: false,
+            timer: 3000
+          });
+        }
+      }).submitForm(formData);
+    });
+  </script>
+</body>
+</html>
